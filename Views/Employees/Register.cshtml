@@ -4,6 +4,7 @@
 
 
 <form asp-action="Save" asp-controller="Employees" method="POST" class="fomr-horizintal">
+  <input type="hidden" asp-for="Id">
   <input type="text" class="form-control" asp-for="Name" placeholder="Nome">
   <input type="float" class="form-control" asp-for="Salary" placeholder="Salário">
   <input type="text" class="form-control" asp-for="Cpf" placeholder="Cpf">

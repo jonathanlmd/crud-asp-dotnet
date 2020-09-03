@@ -21,9 +21,31 @@ namespace crud.Controllers {
 
 		[HttpPost]
 		public IActionResult Save(Employee employee) {
-			database.Employees.Add(employee);
+			if (employee.Id == 0) {
+				// Save employee
+				database.Employees.Add(employee);
+			} else {
+				// Update employee
+				Employee registeredEmployee = database.Employees.First(record => record.Id == employee.Id);
+				registeredEmployee.Name = employee.Name;
+				registeredEmployee.Cpf = employee.Cpf;
+				registeredEmployee.Salary = employee.Salary;
+			}
 			database.SaveChanges();
 			return RedirectToAction("Index");
 		}
+
+		public IActionResult Edit(int id) {
+			Employee employee = database.Employees.First(record => record.Id == id);
+			return View("Register", employee);
+		}
+
+		public IActionResult Delete(int id) {
+			Employee employee = database.Employees.First(record => record.Id == id);
+			database.Employees.Remove(employee);
+			database.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
 	}
 }
