@@ -1,0 +1,11 @@
+@model crud.Models.Employee
+
+<h2>Cadatro de Funcionários</h2>
+
+
+<form asp-action="Save" asp-controller="Employees" method="POST" class="fomr-horizintal">
+  <input type="text" class="form-control" asp-for="Name" placeholder="Nome">
+  <input type="float" class="form-control" asp-for="Salary" placeholder="Salário">
+  <input type="text" class="form-control" asp-for="Cpf" placeholder="Cpf">
+  <button class="btn btn-sucess">Cadastrar</button>
+</form>
